@@ -1,17 +1,55 @@
 <template>
   <div id="app">
-    <h1>hello</h1>
+
+    <Header @getValueInput="getSearch"/>
+
+    <Main :films="filmsList"/>
+
   </div>
 </template>
 
 <script>
+import Header from '@/components/Header.vue';
+import Main from '@/components/Main.vue';
 import axios from 'axios';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Header,
+    Main,
+  },
+  data(){
+        return {
+          filmsList: null,
+          searchString: '',
+            
+        }
+    },
+    created(){
+        this.getValue()
+    },
+    methods: {
+        getValue(){
+            axios.get('https://api.themoviedb.org/3/search/movie', {
+                params: {
+                    api_key: 'a9afe8d25b0f316b8722fba1a304f377',
+                    query: this.searchString,
+                    language: 'it-IT'
+                },
+            })
+            .then(results => {
+                console.log(results.data.results);
+                this.filmsList = results.data.results
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        },
+        getSearch(text){
+         this.searchString = text;
+        }
+    }
 }
 </script>
 
