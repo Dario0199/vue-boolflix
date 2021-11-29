@@ -26,9 +26,9 @@ export default {
             
         }
     },
-    created(){
-        this.getValue()
-    },
+    // created(){
+    //     this.getValue()
+    // },
     methods: {
         getValue(){
             axios.get('https://api.themoviedb.org/3/search/movie', {
@@ -46,8 +46,10 @@ export default {
                 console.log(error);
             })
         },
+        
         getSearch(text){
          this.searchString = text;
+         this.getValue()
         }
     }
 }
