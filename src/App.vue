@@ -3,7 +3,7 @@
 
     <Header @getValueInput="getSearch"/>
 
-    <Main :films="filmsList"/>
+    <Main :films="filmsList" :seriesData="seriesList"/>
 
   </div>
 </template>
@@ -22,6 +22,7 @@ export default {
   data(){
         return {
           filmsList: null,
+          seriesList: null,
           searchString: '',
             
         }
@@ -31,6 +32,20 @@ export default {
     // },
     methods: {
         getValue(){
+            axios.get('https://api.themoviedb.org/3/search/tv', {
+              params: {
+                api_key: 'a9afe8d25b0f316b8722fba1a304f377',
+                query: this.searchString,
+                language: 'it-IT'
+              }
+            })
+            .then(results => {
+              this.seriesList = results.data.results
+            })
+            .catch(error => {
+              console.log(error);
+            });
+
             axios.get('https://api.themoviedb.org/3/search/movie', {
                 params: {
                     api_key: 'a9afe8d25b0f316b8722fba1a304f377',

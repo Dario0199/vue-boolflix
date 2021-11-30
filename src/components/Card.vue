@@ -1,11 +1,14 @@
 <template>
     <div class="card">
          <ul>
+             <li>
+                 <img class="cover" :src="`https://image.tmdb.org/t/p/w185${image}`" :alt="image">
+             </li>
             <li>Titolo: {{ first_title }}</li>
             <li>Titolo originale: {{ second_title }}</li>
             <li>
                 Lingua:
-                <img v-if="flags.includes(language)" :src="require(`../assets/${language}.png`)" :alt="language"> 
+                <img class="flag" v-if="flags.includes(language)" :src="require(`../assets/${language}.png`)" :alt="language"> 
                 <span v-else>{{ language }}</span>
             </li>
             <li>Voto: {{ vote }}</li>
@@ -17,10 +20,11 @@
 export default {
     name: 'Card',
     props: {
-         first_title: String,
-         second_title: String,
-         language: String,
-         vote: Number,
+        image: String,
+        first_title: String,
+        second_title: String,
+        language: String,
+        vote: Number,
     },
     data(){
         return{
@@ -37,7 +41,11 @@ export default {
 
 <style scoped lang="scss">
 .card{
-    img{
+   ul{
+       list-style: none;
+   }
+
+    .flag{
         width: 20px;
     }
 }

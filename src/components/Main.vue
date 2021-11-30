@@ -2,10 +2,20 @@
     <main>
         <div v-for="(film, index) in films" :key="film-`${index}`">
            <Card
+                :image="film.poster_path"
                 :first_title="film.title"
                 :second_title="film.original_title"
                 :language="film.original_language"
                 :vote="film.vote_average"
+           />
+        </div>
+        <div v-for="(series, index) in seriesData" :key="series-`${index}`">
+            <Card
+                :image="series.poster_path"
+                :first_title="series.name"
+                :second_title="series.original_name"
+                :language="series.original_language"
+                :vote="series.vote_average"
            />
         </div>
     </main>
@@ -21,6 +31,7 @@ export default {
     },
     props:{
         films: Array,
+        seriesData: Array,
     }
 }
 </script>
