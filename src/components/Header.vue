@@ -1,7 +1,7 @@
 <template>
   <header>
       <section>
-          <input v-model="getSearchString" type="text" placeholder="
+          <input v-model.trim="getSearchString" type="text" placeholder="
           Search films">
           <button @click.prevent="getFilmList">Search</button>
       </section>
