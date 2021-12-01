@@ -1,9 +1,30 @@
 <template>
-  <header>
-      <section>
+  <header class="d-flex align-items-center justify-content-between">
+      <section class="left">
+          <img src="../assets/boolflix.png" alt="">
+          <ul>
+              <li>
+                  <a href="#">Home</a>
+              </li>
+              <li>
+                  <a href="#">Serie Tv</a>
+              </li>
+              <li>
+                  <a href="#">Film</a>
+              </li>
+              <li>
+                  <a href="#">Aggiunti di recente</a>
+              </li>
+              <li>
+                  <a href="#">La mia lista</a>
+              </li>
+          </ul>
+      </section>
+
+      <section class="right">
           <input v-model.trim="getSearchString" type="text" placeholder="
           Search films">
-          <button @click.prevent="getFilmList">Search</button>
+          <button @click.prevent="getFilmList"><i class="fas fa-search"></i></button>
       </section>
   </header>
 </template>
@@ -29,5 +50,70 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import  '@/style/variables.scss';
 
+    header{
+        background: $primary-color;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+
+        .left{
+            display: flex;
+            align-items: center;
+
+            img{
+            width: 200px;
+            margin: 10px 20px;
+            }
+
+            ul{
+                display: flex;
+                list-style: none;
+
+                a{
+                    text-decoration: none;
+                    margin: 0 10px;
+                    color: $secondary-color;
+                    font-size: 14px;
+                    font-weight: 600;
+                    &:hover{
+                        color: $custom-color;
+                    }
+                }
+            }
+        }
+        
+        
+        section{
+            padding: 10px;
+
+            input{
+                height: 30px;
+                margin: 10px;
+                background: rgb(63, 62, 62);
+                border: none;
+                border-radius: 10px;
+                color:$secondary-color;
+
+                &:active{
+                    border: $secondary-color;
+                }
+            }
+            button{
+                border:none;
+                background: none;
+                color: white;
+                font-size: 20px;
+                margin-right: 20px;
+
+                &:active{
+                    color: $custom-color;
+                }
+            }
+        }
+    }
+    
 </style>

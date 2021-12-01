@@ -7,6 +7,7 @@
                 :second_title="film.original_title"
                 :language="film.original_language"
                 :vote="film.vote_average"
+                :description="film.overview"
            />
         </div>
         <div v-for="(series, index) in seriesData" :key="series-`${index}`">
@@ -16,6 +17,7 @@
                 :second_title="series.original_name"
                 :language="series.original_language"
                 :vote="series.vote_average"
+                :description="series.overview"
            />
         </div>
     </main>
@@ -37,5 +39,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+main{
+    padding-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 </style>

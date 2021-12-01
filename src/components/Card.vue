@@ -1,17 +1,37 @@
 <template>
-    <div class="card">
+    <div class="cards">
          <ul>
-             <li>
-                 <img class="cover" :src="`https://image.tmdb.org/t/p/w185${image}`" :alt="image">
-             </li>
-            <li>Titolo: {{ first_title }}</li>
-            <li>Titolo originale: {{ second_title }}</li>
-            <li>
-                Lingua:
-                <img class="flag" v-if="flags.includes(language)" :src="require(`../assets/${language}.png`)" :alt="language"> 
-                <span v-else>{{ language }}</span>
-            </li>
-            <li>Voto: {{ vote }}</li>
+            <div class="cover-img">
+                <li>
+                    <img :src="`https://image.tmdb.org/t/p/w342${image}`" :alt="first_title">
+                </li>
+            
+                <div class="info">
+                    <li>
+                        <span>Titolo:</span> 
+                        {{ first_title }}
+                    </li>
+                    <li>
+                        <span>Titolo originale:</span> 
+                        {{ second_title }}
+                    </li>
+                    <li>
+                        <span>Lingua:</span>
+                        <img class="flag" v-if="flags.includes(language)" :src="require(`../assets/${language}.png`)" :alt="language"> 
+                        <span v-else>{{ language }}</span>
+                    </li>
+                    <li>
+                        <span>Voto:</span>
+                        <span class="star" v-for="(star, index) in Math.ceil(vote / 2)" :key="`star-${index}`">
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </li>
+                    <li>
+                        <span>Descrizione:</span> 
+                        {{ description }}
+                    </li>
+                </div>
+            </div>
         </ul>
     </div>
 </template>
@@ -25,6 +45,7 @@ export default {
         second_title: String,
         language: String,
         vote: Number,
+        description: String,
     },
     data(){
         return{
@@ -40,9 +61,41 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.card{
+@import  '@/style/variables.scss';
+
+.cards{
    ul{
        list-style: none;
+
+       .cover-img{
+           width: 342px;
+           position: relative;
+
+           .info{
+               width: 100%;
+               height: 100%;
+               background: rgba(0, 0, 0, 0.815);
+               position: absolute;
+               padding: 25px;
+               top: 0px;
+               font-size: 14px;
+               font-weight: 300;
+               color: white;
+               filter: opacity(0.0);
+               &:hover{
+                   filter: opacity(1);
+               }
+
+               span{
+                   font-weight: 700;
+               }
+
+               .star{
+                   color: $star-color;
+               }
+           }
+
+       }
    }
 
     .flag{

@@ -71,5 +71,11 @@ export default {
 </script>
 
 <style lang="scss">
+@import  '@/style/variables.scss';
+
+#app{
+  height: 100%;
+  background: $primary-color;
+}
 
 </style>
