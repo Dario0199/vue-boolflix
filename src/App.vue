@@ -73,8 +73,10 @@ export default {
 <style lang="scss">
 @import  '@/style/variables.scss';
 
+
 #app{
-  height: 100%;
+  min-height: 100vh;
+  max-height: 100%;
   background: $primary-color;
 }
 

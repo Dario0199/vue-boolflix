@@ -3,7 +3,8 @@
          <ul>
             <div class="cover-img">
                 <li>
-                    <img :src="`https://image.tmdb.org/t/p/w342${image}`" :alt="first_title">
+                    <img v-if="image" :src="`https://image.tmdb.org/t/p/w342${image}`" :alt="first_title">
+                    <img v-else src="@/assets/not-found2.jpg" alt="" class="not-found">
                 </li>
             
                 <div class="info">
@@ -70,6 +71,12 @@ export default {
        .cover-img{
            width: 342px;
            position: relative;
+
+           .not-found{
+               width: 342px;
+               height: 513px;
+               object-fit: cover;
+           }
 
            .info{
                width: 100%;

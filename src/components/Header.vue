@@ -22,7 +22,7 @@
       </section>
 
       <section class="right">
-          <input v-model.trim="getSearchString" type="text" placeholder="
+          <input @keyup.enter="getFilmList" v-model.trim="getSearchString" type="text" placeholder="
           Search films">
           <button @click.prevent="getFilmList"><i class="fas fa-search"></i></button>
       </section>
