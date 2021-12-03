@@ -40,7 +40,7 @@ export default {
 
 <style scoped lang="scss">
 main{
-    padding-top: 100px;
+    padding-top: 120px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

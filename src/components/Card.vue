@@ -67,6 +67,7 @@ export default {
 .cards{
    ul{
        list-style: none;
+       
 
        .cover-img{
            width: 342px;

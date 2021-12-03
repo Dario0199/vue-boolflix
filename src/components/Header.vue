@@ -23,8 +23,9 @@
 
       <section class="right">
           <input @keyup.enter="getFilmList" v-model.trim="getSearchString" type="text" placeholder="
-          Search films">
+          Cerca Film o SerieTV">
           <button @click.prevent="getFilmList"><i class="fas fa-search"></i></button>
+          <img class="profile" src="../assets/photo-profile.jpg" alt="">
       </section>
   </header>
 </template>
@@ -97,10 +98,7 @@ export default {
                 border: none;
                 border-radius: 10px;
                 color:$secondary-color;
-
-                &:active{
-                    border: $secondary-color;
-                }
+                outline: none;
             }
             button{
                 border:none;
@@ -111,6 +109,15 @@ export default {
 
                 &:active{
                     color: $custom-color;
+                }
+            }
+            .profile{
+                width: 50px;
+                margin-right: 20px;
+                cursor: pointer;
+
+                &:active{
+                    border:2px solid $secondary-color;
                 }
             }
         }
